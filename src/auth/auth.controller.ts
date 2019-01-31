@@ -10,6 +10,6 @@ export class AuthController {
 
     @Post('login')
     async signIn(@Body() userDto: UserDto) {
-        return this.authService.validateUser(userDto)
+        return this.authService.validateUser(userDto);
     }
 }
