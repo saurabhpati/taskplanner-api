@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from 'typeorm';
+import { Task } from '../task/task.entity';
 
 @Entity()
 export class Status {
@@ -7,4 +8,7 @@ export class Status {
 
     @Column({ length: 64 })
     Name: number;
+
+    @OneToOne(type => Task, task => task.Status)
+    Task: Task;
 }
