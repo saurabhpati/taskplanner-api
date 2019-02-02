@@ -6,21 +6,21 @@ export class User {
     @PrimaryGeneratedColumn()
     Id: number;
 
-    @Column({length: 128})
+    @Column({ length: 128 })
     FirstName: string;
 
-    @Column({length: 128})
+    @Column({ length: 128 })
     LastName: string;
 
-    @Column({length: 128})
+    @Column({ length: 128 })
     Email: string;
 
-    @Column({length: 64})
+    @Column({ length: 64 })
     Username: string;
 
-    @Column({length: 64})
+    @Column({ length: 64 })
     Password: string;
 
-    @OneToMany(type => Task, task => task.Users)
-    Task: Task;
+    @OneToMany(type => Task, task => task.User)
+    Tasks: Task[];
 }
