@@ -1,6 +1,7 @@
 import { TeamService } from './team.service';
-import { Get, Controller, Query } from '@nestjs/common';
+import { Get, Controller, Query, Post, Body } from '@nestjs/common';
 import { Team } from './team.entity';
+import { CreateTeamDto } from './dtos/create.team.dto';
 
 @Controller('team')
 export class TeamController {
@@ -16,5 +17,10 @@ export class TeamController {
     @Get()
     getByName(@Query() name: string): Promise<Team[]> {
         return this.service.getByName(name);
+    }
+
+    @Post()
+    create(@Body() createDto: CreateTeamDto) {
+        return this.service.create(createDto);
     }
 }

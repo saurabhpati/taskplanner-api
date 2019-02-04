@@ -14,8 +14,7 @@ export class Task {
     @Column()
     Description: string;
 
-    @OneToOne(type => Status, status => status.Task)
-    @JoinColumn()
+    @ManyToOne(type => Status, status => status.Tasks)
     Status: Status;
 
     @ManyToOne(type => User, user => user.Tasks)

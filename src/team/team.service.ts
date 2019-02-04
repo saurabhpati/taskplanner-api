@@ -1,6 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { Repository } from "typeorm";
 import { Team } from "./team.entity";
+import { CreateTeamDto } from "./dtos/create.team.dto";
+import { User } from "src/user/user.entity";
 
 @Injectable()
 export class TeamService {
@@ -18,5 +20,19 @@ export class TeamService {
 
     getAll(): Promise<Team[]> {
         return this.repository.find();
+    }
+
+    create(createDto: CreateTeamDto): Promise<any> {
+        return this.repository.save({
+            Name: name,
+            Description: createDto.description,
+            Users: createDto.users.map(user => ({
+                FirstName: user.firstName,
+                LastName: user.lastName,
+                Username: user.username,
+                Email: user.email,
+                Password: user.password
+            }))
+        });
     }
 }
