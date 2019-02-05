@@ -21,7 +21,7 @@ export class TeamService {
         return this.repository.find();
     }
 
-    create(createDto: CreateTeamDto): Promise<any> {
+    create(createDto: CreateTeamDto): Promise<CreateTeamDto> {
         return this.repository.save(createDto);
     }
 }

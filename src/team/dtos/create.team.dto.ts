@@ -5,7 +5,6 @@ export class CreateTeamDto {
         this.users = [];
     }
 
-    id: number;
     name: string;
     description: string;
     users: CreateUserDto[];

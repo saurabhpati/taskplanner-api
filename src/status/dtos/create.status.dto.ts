@@ -5,7 +5,6 @@ export class CreateStatusDto {
         this.tasks = [];
     }
 
-    id: number;
     name: number;
     tasks: CreateTaskDto[];
 }

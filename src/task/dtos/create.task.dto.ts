@@ -7,7 +7,6 @@ export class CreateTaskDto {
         this.notes = [];
     }
 
-    id: string;
     name: string;
     description: string;
     status: CreateStatusDto;
