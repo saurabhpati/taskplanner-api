@@ -16,13 +16,8 @@ export class UserService {
             try {
                 bcrypt.genSalt(10, (error, salt) => {
                     bcrypt.hash(userDto.password, salt, null, (error, hash) => {
-                        return resolve(this.userRepository.save({
-                            FirstName: userDto.username,
-                            LastName: userDto.lastName,
-                            Username: userDto.username,
-                            Password: hash,
-                            Email: userDto.email
-                        }));
+                        userDto.password = hash;
+                        return resolve(this.userRepository.save(userDto));
                     });
                 });
             } catch (error) {
@@ -32,7 +27,7 @@ export class UserService {
     }
 
     async get(username: string): Promise<User> {
-        return this.userRepository.findOne({ Username: username })
+        return this.userRepository.findOne({ username })
     }
 
     async getAll(): Promise<User[]> {

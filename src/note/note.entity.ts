@@ -4,14 +4,14 @@ import { Task } from '../task/task.entity';
 @Entity()
 export class Note {
     @PrimaryGeneratedColumn()
-    Id: number;
+    id: number;
 
     @Column({ length: 128 })
-    Title: string;
+    title: string;
 
     @Column()
-    Description: string;
+    description: string;
 
-    @ManyToOne(type => Task, task => task.Notes)
-    Task: Task;
+    @ManyToOne(type => Task, task => task.notes)
+    task: Task;
 }

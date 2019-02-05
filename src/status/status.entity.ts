@@ -1,14 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Task } from '../task/task.entity';
 
 @Entity()
 export class Status {
     @PrimaryGeneratedColumn()
-    Id: number;
+    id: number;
 
     @Column({ length: 64 })
-    Name: number;
+    name: number;
 
-    @OneToMany(type => Task, task => task.Status)
-    Tasks: Task[];
+    @OneToMany(type => Task, task => task.status)
+    tasks: Task[];
 }

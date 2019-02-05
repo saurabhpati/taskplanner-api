@@ -6,20 +6,20 @@ import { Note } from '../note/note.entity';
 @Entity()
 export class Task {
     @PrimaryGeneratedColumn()
-    Id: string;
+    id: string;
 
     @Column({ length: 128 })
-    Name: string;
+    name: string;
 
     @Column()
-    Description: string;
+    description: string;
 
-    @ManyToOne(type => Status, status => status.Tasks)
-    Status: Status;
+    @ManyToOne(type => Status, status => status.tasks)
+    status: Status;
 
-    @ManyToOne(type => User, user => user.Tasks)
-    User: User;
+    @ManyToOne(type => User, user => user.tasks)
+    user: User;
 
-    @OneToMany(type => Note, note => note.Task)
-    Notes: Note[];
+    @OneToMany(type => Note, note => note.task)
+    notes: Note[];
 }

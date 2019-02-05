@@ -5,26 +5,26 @@ import { Team } from '../team/team.entity';
 @Entity()
 export class User {
     @PrimaryGeneratedColumn()
-    Id: number;
+    id: number;
 
     @Column({ length: 128 })
-    FirstName: string;
+    firstName: string;
 
     @Column({ length: 128 })
-    LastName: string;
+    lastName: string;
 
     @Column({ length: 128 })
-    Email: string;
+    email: string;
 
     @Column({ length: 64 })
-    Username: string;
+    username: string;
 
     @Column({ length: 64 })
-    Password: string;
+    password: string;
 
-    @OneToMany(type => Task, task => task.User)
-    Tasks: Task[];
+    @OneToMany(type => Task, task => task.user)
+    tasks: Task[];
 
-    @ManyToMany(type => Team, team => team.Users)
-    Teams: Team[];
+    @ManyToMany(type => Team, team => team.users)
+    teams: Team[];
 }

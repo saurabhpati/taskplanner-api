@@ -4,15 +4,15 @@ import { User } from '../user/user.entity';
 @Entity()
 export class Team {
     @PrimaryGeneratedColumn()
-    Id: number;
+    id: number;
 
     @Column({ length: 64 })
-    Name: string;
+    name: string;
 
     @Column({ length: 256 })
-    Description: string;
+    description: string;
 
-    @ManyToMany(type => User, user => user.Teams)
+    @ManyToMany(type => User, user => user.teams)
     @JoinTable({ name: 'UserTeam' })
-    Users: User[];
+    users: User[];
 }
