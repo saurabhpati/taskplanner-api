@@ -10,7 +10,7 @@ export class TaskService {
 
     }
 
-    getAll(userId: number): Promise<Task[]> {
+    async getAll(userId: number): Promise<Task[]> {
         return this.repository
             .createQueryBuilder('Task')
             .innerJoinAndSelect('Task.Users', 'Users')
@@ -18,19 +18,19 @@ export class TaskService {
             .getMany();
     }
 
-    get(taskId: number): Promise<Task> {
+    async get(taskId: number): Promise<Task> {
         return this.repository.findOne(taskId);
     }
 
-    create(createDto: CreateTaskDto): Promise<CreateTaskDto> {
+    async create(createDto: CreateTaskDto): Promise<CreateTaskDto> {
         return this.repository.save(createDto);
     }
 
-    update(updateDto: UpdateTaskDto): Promise<UpdateResult> {
+    async update(updateDto: UpdateTaskDto): Promise<UpdateResult> {
         return this.repository.update(updateDto.id, updateDto);
     }
 
-    delete(id: number): Promise<DeleteResult> {
+    async delete(id: number): Promise<DeleteResult> {
         return this.repository.delete(id);
     }
 }

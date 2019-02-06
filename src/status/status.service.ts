@@ -10,27 +10,27 @@ export class StatusService {
 
     }
 
-    getById(id: number): Promise<Status> {
+    async getById(id: number): Promise<Status> {
         return this.repository.findOne(id);
     }
 
-    getByName(name: string): Promise<Status[]> {
+    async getByName(name: string): Promise<Status[]> {
         return this.repository.find({ where: { Name: name } });
     }
 
-    getAll(): Promise<Status[]> {
+    async getAll(): Promise<Status[]> {
         return this.repository.find();
     }
 
-    create(createDto: CreateStatusDto): Promise<Status> {
+    async create(createDto: CreateStatusDto): Promise<Status> {
         return this.repository.save(createDto);
     }
 
-    update(updateDto: UpdateStatusDto): Promise<UpdateResult> {
+    async update(updateDto: UpdateStatusDto): Promise<UpdateResult> {
         return this.repository.update(updateDto.id, updateDto);
     }
 
-    delete(id: number): Promise<DeleteResult> {
+    async delete(id: number): Promise<DeleteResult> {
         return this.repository.delete(id);
     }
 }

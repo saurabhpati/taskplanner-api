@@ -1,9 +1,10 @@
 import { Injectable, Query } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { Repository, UpdateResult, DeleteResult } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './user.entity';
 import { CreateUserDto } from './dtos/create.user.dto';
 import * as bcrypt from 'bcrypt-nodejs';
+import { UpdateUserDto } from './dtos/update.user.dto';
 
 @Injectable()
 export class UserService {
@@ -11,7 +12,7 @@ export class UserService {
 
     }
 
-    async register(userDto: CreateUserDto): Promise<User> {
+    async create(userDto: CreateUserDto): Promise<User> {
         return new Promise((resolve, reject) => {
             try {
                 bcrypt.genSalt(10, (error, salt) => {
@@ -32,5 +33,13 @@ export class UserService {
 
     async getAll(): Promise<User[]> {
         return this.userRepository.find();
+    }
+
+    async update(updateDto: UpdateUserDto): Promise<UpdateResult> {
+        return this.userRepository.update(updateDto.id, updateDto);
+    }
+
+    async delete(id: number): Promise<DeleteResult> {
+        return this.userRepository.delete(id);
     }
 }

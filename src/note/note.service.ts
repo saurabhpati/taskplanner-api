@@ -10,23 +10,23 @@ export class NoteService {
 
     }
 
-    get(id: number): Promise<Note> {
+    async get(id: number): Promise<Note> {
         return this.repository.findOne(id);
     }
 
-    getAll(): Promise<Note[]> {
+    async getAll(): Promise<Note[]> {
         return this.repository.find();
     }
 
-    create(createDto: CreateNoteDto): Promise<CreateNoteDto> {
+    async create(createDto: CreateNoteDto): Promise<CreateNoteDto> {
         return this.repository.save(createDto);
     }
 
-    update(updateDto: UpdateNoteDto): Promise<UpdateResult> {
+    async update(updateDto: UpdateNoteDto): Promise<UpdateResult> {
         return this.repository.update(updateDto.id, updateDto);
     }
 
-    delete(id: number): Promise<DeleteResult> {
+    async delete(id: number): Promise<DeleteResult> {
         return this.repository.delete(id);
     }
 }
