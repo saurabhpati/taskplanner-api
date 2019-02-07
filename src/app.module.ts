@@ -1,4 +1,5 @@
-import { Module, forwardRef } from '@nestjs/common';
+import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql'
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -19,6 +20,9 @@ import { TeamModule } from './team/team.module';
     TeamModule,
     UserModule,
     AuthModule,
+    GraphQLModule.forRoot({
+      typePaths: ['./**/*.graphql'],
+    })
   ],
   controllers: [AppController],
   providers: [AppService],

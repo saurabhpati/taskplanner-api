@@ -10,7 +10,7 @@ export class UpdateStatusDto {
     id: number;
 
     @ApiModelProperty({required: true})
-    name: number;
+    name: string;
 
     @ApiModelPropertyOptional()
     tasks: UpdateTaskDto[];

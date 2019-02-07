@@ -7,7 +7,7 @@ export class CreateStatusDto {
     }
 
     @ApiModelProperty({ required: true })
-    name: number;
+    name: string;
 
     @ApiModelPropertyOptional()
     tasks: CreateTaskDto[];
