@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, UpdateResult, DeleteResult } from 'typeorm';
 import { Note } from './note.entity';
 import { CreateNoteDto } from './dtos/create.note.dto';
@@ -6,7 +7,7 @@ import { UpdateNoteDto } from './dtos/update.note.dto';
 
 @Injectable()
 export class NoteService {
-    constructor(private readonly repository: Repository<Note>) {
+    constructor(@InjectRepository(Note) private readonly repository: Repository<Note>) {
 
     }
 

@@ -3,10 +3,11 @@ import { Repository, UpdateResult, DeleteResult } from 'typeorm';
 import { Team } from './team.entity';
 import { CreateTeamDto } from './dtos/create.team.dto';
 import { UpdateTeamDto } from './dtos/update.team.dto';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class TeamService {
-    constructor(private readonly repository: Repository<Team>) {
+    constructor(@InjectRepository(Team) private readonly repository: Repository<Team>) {
 
     }
 
