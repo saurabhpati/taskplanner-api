@@ -10,10 +10,13 @@ import { NoteModule } from './note/note.module';
 import { StatusModule } from './status/status.module';
 import { TaskModule } from './task/task.module';
 import { TeamModule } from './team/team.module';
+import { Config } from '../config.env';
+
+const ormConfig = process.env.NODE_ENV === 'production' ? Config.production.orm : Config.development.orm;
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(),
+    TypeOrmModule.forRoot(ormConfig),
     NoteModule,
     StatusModule,
     TaskModule,

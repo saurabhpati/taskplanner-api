@@ -1,18 +1,9 @@
-export interface IOrmConfig {
-    type: string;
-    host: string;
-    port: number;
-    username: string;
-    password: string;
-    database: string;
-    entities: string[];
-    synchronize: boolean;
-}
+import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 export interface IMode {
     port: number;
     cors: boolean;
-    orm: IOrmConfig;
+    orm: TypeOrmModuleOptions;
 }
 
 export class Config {
