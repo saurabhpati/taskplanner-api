@@ -1,12 +1,12 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
-export interface IMode {
+interface IMode {
     port: number;
     cors: boolean;
     orm: TypeOrmModuleOptions;
 }
 
-export class Config {
+class Config {
     static development: IMode = {
         port: 8000,
         cors: true,
@@ -20,12 +20,12 @@ export class Config {
             entities: [
                 "src/**/**.entity{.ts,.js}"
             ],
-            synchronize: true,
+            synchronize: false,
         },
     };
 
     static production: IMode = {
-        port: 8000,
+        port: 0,
         cors: true,
         orm: {
             type: "mysql",
@@ -37,7 +37,10 @@ export class Config {
             entities: [
                 "dist/**/**.entity.js"
             ],
-            synchronize: true,
+            synchronize: false,
         },
     }
 }
+
+const envConfig = process.env.NODE_ENV ? Config.production : Config.development;
+export default envConfig;
