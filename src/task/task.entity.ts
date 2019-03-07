@@ -17,7 +17,7 @@ export class Task {
     @ManyToOne(type => Status, status => status.tasks)
     status: Status;
 
-    @ManyToOne(type => User, user => user.tasks)
+    @ManyToOne(type => User, user => user.tasks, { cascade: true })
     user: User;
 
     @OneToMany(type => Note, note => note.task)

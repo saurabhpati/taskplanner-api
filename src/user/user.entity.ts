@@ -25,6 +25,6 @@ export class User {
     @OneToMany(type => Task, task => task.user)
     tasks: Task[];
 
-    @ManyToMany(type => Team, team => team.users)
+    @ManyToMany(type => Team, team => team.users, { cascade: true })
     teams: Team[];
 }

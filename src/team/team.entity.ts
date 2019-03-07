@@ -9,7 +9,7 @@ export class Team {
     @Column({ length: 64 })
     name: string;
 
-    @Column({ length: 256 })
+    @Column({ length: 256, default: "" })
     description: string;
 
     @ManyToMany(type => User, user => user.teams)

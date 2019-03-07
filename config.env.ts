@@ -20,7 +20,7 @@ class Config {
             entities: [
                 "src/**/**.entity{.ts,.js}"
             ],
-            synchronize: false,
+            synchronize: true,
         },
     };
 
